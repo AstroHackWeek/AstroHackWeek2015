@@ -1,6 +1,6 @@
 # Astro Hack Week 2015
 
-* Participants: please see [the wiki](https://github.com/AstroHackWeek/AstroHackWeek2015/wiki) for more information about locations, hacking etc.
+#### Participants: [please see the wiki](https://github.com/AstroHackWeek/AstroHackWeek2015/wiki) for information about locations, hacking etc.
 
 * For more general information, please see [the website](http://astrohackweek.github.io/)
 
