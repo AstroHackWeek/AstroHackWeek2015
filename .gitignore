@@ -55,3 +55,20 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Latex crap
+probability_questions.aux
+probability_questions.pdf
+probability_slides.aux
+probability_slides.nav
+probability_slides.out
+probability_slides.pdf
+probability_slides.snm
+probability_slides.toc
+nested_sampling.aux
+nested_sampling.nav
+nested_sampling.out
+nested_sampling.pdf
+nested_sampling.snm
+nested_sampling.toc
+
