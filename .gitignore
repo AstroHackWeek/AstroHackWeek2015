@@ -72,3 +72,7 @@ nested_sampling.pdf
 nested_sampling.snm
 nested_sampling.toc
 
+# Random stuff
+AHW2015
+*.profile
+*ipynb_checkpoints*
