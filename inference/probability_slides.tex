@@ -19,6 +19,10 @@
 {\color{blue} @brendonbrewer}}
 
 \usepackage{dsfont}
+\usepackage{colortbl}
+\definecolor{LightGray}{gray}{0.9}
+\definecolor{DarkGray}{gray}{0.3}
+\definecolor{LightCyan}{rgb}{0.9, 1, 1}
 
 \begin{document}
 
@@ -384,6 +388,25 @@ Bayesian updating is completely equivalent to:
 
 It just seems more complicated than this because we often apply it to more
 complex sets of hypotheses.
+\end{frame}
+
+
+\begin{frame}[t]{}
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c|cc|c}
+			&		My suitcase		&		Not my suitcase	&\\
+\hline
+\rowcolor{LightCyan}
+White sticker		&		0.4			&		0.06	& 0.46\\
+\rowcolor{DarkGray}
+No white sticker	&		0			&		0	& 0\\
+\hline
+			&				&		\\
+\end{tabular}
+\end{table}
 \end{frame}
 
 
