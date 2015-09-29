@@ -5,6 +5,11 @@ model = "model
 }
 "
 
+############################################
+# For a gentle introduction to JAGS, see   #
+# https://github.com/eggplantbren/STATS331 #
+############################################
+
 # The data (use NA for no data)
 data = list(x=2, N=5)
 
