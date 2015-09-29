@@ -21,30 +21,39 @@ for Astro Hack Week 2015}
 \section{Bayesian Inference}
 
 
-\subsection{Bayes' Rule}
-From the single-hypothesis version of Bayes' rule:
+\subsection{Probability theory}
+Here are some equations of probability theory. Which rules are being used in
+each? Is each equation completely general, or has something specific been
+assumed (e.g. independence, mutual exclusivity)?
+
 \begin{eqnarray}
-P(H|D) &=& \frac{P(H)P(D|H)}{P(D)}
+P(A, B | C) &=& P(A | C) P (B | C)\\
+P(A \vee B | C) &=& P(A | C) + P(B | C)\\
+P(A, B | C, D) &=& P(A, B | D)P(C | A, B, D)/P(C | D)\\
+P(Z | I) &=& \sum_i P(A_i | I)P(Z | A_i, I)
 \end{eqnarray}
-prove the version commonly used for a set of mutually exclusive and exhaustive
-hypotheses $\{H_1, H_2, ..., H_N\}$:
-\begin{eqnarray}
-P(H_i|D) &=& \frac{P(H_i)P(D|H_i)}{P(D)}\label{eq:bayes}
-\end{eqnarray}
-for all $i \in \{1, 2, ..., N\}$.
+
+For an interesting physicsy way of getting the hang of writing correct
+probability expressions, see arxiv: 1205.4446 by Hogg. Be aware that his
+arguments about units apply to probability density functions, whereas
+our probabilities above are all dimensionless. Nevertheless, both satisfy rules
+of very similar form.
+
 
 \subsection{Discrete parameter estimation}
 You are a customs agent. Among other things, you are supposed to prevent
 drugs being smuggled in packages sent into the country. A colleague finds a
 package containing two toys. Let the number of toys containing drugs be
 $\eta$. Clearly the value of $\eta$ is either 0, 1, or 2. You drill into
-one of the toys and find that it does not have drugs.
+one of the toys and find that it does not have drugs (call this proposition
+$D$ for data).
 Calculate the posterior distribution for $\eta$ given that the tested
 toy did not contain drugs. Assume a (discrete) uniform prior, i.e.
 $P(\eta=0) = P(\eta=1) = P(\eta=2) = 1/3$.
 
-{\tiny Hint: Use Bayes' rule in the form of Equation~\ref{eq:bayes}
-three times, and note they all have the same denominator.}
+{\tiny Hint: Use Bayes' rule three times, in the form
+$P(\eta = i | D) = \frac{P(\eta=i)P(D|\eta=i)}{P(D)}$, where the denominator is
+the same each time.}
 
 \subsection{Continuous parameter estimation}
 An X-ray source emits photons at a steady rate, but since it's so distant, we

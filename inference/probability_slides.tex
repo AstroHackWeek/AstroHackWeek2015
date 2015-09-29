@@ -85,11 +85,12 @@ $P(A \vee B) \geq P(A)$\\
 $P(A \wedge B) \leq P(A)$\\
 $P(A \vee (B \vee C)) = P((A \vee B) \vee C)$\vspace{20pt}
 
-These imply the {\bf sum rule} and the {\bf product rule}, and hence that
+These imply the {\bf sum rule}.
+Some other symmetries imply the {\bf product rule}, and hence that
 {\bf plausibilities are probabilities}.
 \end{frame}
 
-\begin{frame}[t]{Sum and product rule\hspace{170pt}$|| C$}
+\begin{frame}[t]{Sum and product rule}
 $P(A \vee B) = P(A) + P(B) - P(A \wedge B)$\\
 \vspace{20pt}
 $P(A \wedge B) = P(A)P(B|A)$
@@ -144,7 +145,8 @@ P(D) = \sum_{i=1}^N P(H_i)P(D|H_i)
 \end{frame}
 
 
-\begin{frame}[t]{Exercises!\hspace{170pt}$|| I$}
+\begin{frame}[t]{Exercises!}
+Do question 1 on the exercise sheet!
 \end{frame}
 
 \begin{frame}[t]{Parameter estimation}
@@ -162,7 +164,31 @@ The data could also be a number. E.g. the conditioning proposition could be
 D = 4
 \end{equation}
 
-The previous version of Bayes' rule can be applied to each of the.
+The previous version of Bayes' rule can be applied to each of the
+hypotheses.
+\end{frame}
+
+\begin{frame}[t]{Parameter estimation}
+In most applications, we can use the ``parameter estimation'' story. E.g.
+Let $\theta$ be a quantity we want to know. Then the hypotheses might be:
+
+\begin{eqnarray}
+H_1 &\equiv& \theta = 5\\
+H_2 &\equiv& \theta = 6\\
+H_3 &\equiv& \theta = 7
+\end{eqnarray}
+
+The data could also be a number. E.g. the conditioning proposition could be
+\begin{equation}
+D = 4
+\end{equation}
+
+The previous version of Bayes' rule can be applied to each of the
+hypotheses.
+\end{frame}
+
+\begin{frame}[t]{Exercises}
+Do Question 2 on the exercise sheet!
 \end{frame}
 
 \begin{frame}[t]{Parameter estimation}
