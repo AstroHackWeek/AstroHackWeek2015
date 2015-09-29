@@ -24,10 +24,13 @@ for Astro Hack Week 2015}
 \subsection{Probability theory}
 Here are some equations of probability theory. Which rules are being used in
 each? Is each equation completely general, or has something specific been
-assumed (e.g. independence)?
+assumed (e.g. independence, mutual exclusivity)?
 
 \begin{eqnarray}
-P(A | X) ...
+P(A, B | C) &=& P(A | C) P (B | C)\\
+P(A \vee B | C) &=& P(A | C) + P(B | C)\\
+P(A, B | C, D) &=& P(A, B | D)P(C | A, B, D)/P(C | D)\\
+P(Z | I) &=& \sum_i P(A_i | I)P(Z | A_i, I)
 \end{eqnarray}
 
 
