@@ -492,14 +492,23 @@ P(\theta \in [10^{10}, 10^{11}]) = P(\theta \in [10^{11}, 10^{12}])
 The log-uniform prior has density $p(\theta) \propto 1/\theta$.
 \end{frame}
 
-
-
 \begin{frame}[fragile, t]{Common prior assumptions}
 
-{Independent and identically distributed} likelihood:
+{\it Independent and identically distributed} likelihood:
 \begin{eqnarray}
 p(\mathbf{D} | \theta) &=& \prod_{i=1}^N f(D_i | \theta)
 \end{eqnarray}
+\end{frame}
+
+\begin{frame}[fragile, t]{Marginalisation}
+
+This is why MCMC (next session) is useful, but it's also related to
+{\bf prediction} in a Bayesian framework.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.2]{figures/marginalisation.pdf}
+\end{figure}
 
 \end{frame}
 
