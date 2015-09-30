@@ -13,8 +13,8 @@ clean:
 pdf: $(PAPER)
 
 $(SLIDES): $(SLIDES).tex
-	pdflatex $(SLIDES).tex
-	pdflatex $(SLIDES).tex
+	pdflatex -shell-escape $(SLIDES).tex
+	pdflatex -shell-escape $(SLIDES).tex
 
 $(QUESTIONS): $(QUESTIONS).tex
 	pdflatex $(QUESTIONS).tex

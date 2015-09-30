@@ -19,10 +19,7 @@
 {\color{blue} @brendonbrewer}}
 
 \usepackage{dsfont}
-\usepackage{colortbl}
-\definecolor{LightGray}{gray}{0.9}
-\definecolor{DarkGray}{gray}{0.3}
-\definecolor{LightCyan}{rgb}{0.9, 1, 1}
+\usepackage{minted}
 
 \begin{document}
 
@@ -407,9 +404,24 @@ Do Question 4!
 \end{frame}
 
 
-\begin{frame}[t]{Parameter estimation}
+\begin{frame}[fragile, t]{Parameter estimation}
 For a single unknown parameter, it's quite easy to do things numerically
 on a grid.
+
+\begin{minted}[mathescape,
+               numbersep=5pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm,
+               fontsize=\small]{python}
+x = 5 # The data
+mu = np.linspace(0.001, 30., 1001) # The hypothesis space
+prior = 1./mu
+likelihood = mu**5*np.exp(-mu)/scipy.misc.factorial(5)
+posterior = prior*likelihood/np.trapz(prior*likelihood, x=mu)
+plt.plot(mu, posterior)
+plt.show()
+\end{minted}
 
 
 \end{frame}
