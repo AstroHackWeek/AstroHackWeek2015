@@ -40,6 +40,18 @@ our probabilities above are all dimensionless. Nevertheless, both satisfy rules
 of very similar form.
 
 
+\subsection{Bayes' Rule}
+The most useful form of Bayes' rule is
+\begin{equation}
+P(H_i | D) = \frac{P(H_i)P(D|H_i)}{P(D)}
+\end{equation}
+where
+\begin{equation}
+P(D) = \sum_{i=1}^N P(H_i)P(D|H_i).\label{eq:evidence}
+\end{equation}
+$H_i$ can be interpreted as a hypothesis and $D$ as data.
+Give an intuitive explanation for why Equation~\ref{eq:evidence} is true.
+
 \subsection{Discrete parameter estimation}
 You are a customs agent. Among other things, you are supposed to prevent
 drugs being smuggled in packages sent into the country. A colleague finds a

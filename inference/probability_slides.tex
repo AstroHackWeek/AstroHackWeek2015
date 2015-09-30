@@ -47,7 +47,9 @@ Propositions can be {\it combined} to make others, using the operators
 $A \wedge B$\\
 $C \vee A$\\
 $\neg D$\\
-$\neg (A \vee (C \wedge D))$
+$\neg (A \vee (C \wedge D))$\vspace{20pt}
+
+These things satisfy {\it Boolean Algebra}.
 \end{frame}
 
 \begin{frame}[t]{Notation}
@@ -97,7 +99,7 @@ Some other symmetries imply the {\bf product rule}, and hence that
 \begin{frame}[t]{Sum and product rule}
 $P(A \vee B) = P(A) + P(B) - P(A \wedge B)$\\
 \vspace{20pt}
-$P(A \wedge B) = P(A)P(B|A)$
+$P(A \wedge B) = P(A)P(B|A) = P(B)P(A|B)$
 \end{frame}
 
 \begin{frame}[t]{Bayes' Rule\hspace{170pt}$|| I$}
@@ -118,6 +120,10 @@ P(H | D) = \frac{P(H)P(D|H)}{P(D)}
 \textnormal{(posterior probability)} =
 \frac{\textnormal{(prior probability)}\times\textnormal{(likelihood)}}{\textnormal{(marginal likelihood)}}
 \end{equation}
+\vspace{20pt}
+
+The marginal likelihood is also known as the {\it evidence}. This is a
+physicist thing.
 \end{frame}
 
 \begin{frame}[t]{Another Bayes' Rule\hspace{170pt}$|| I$}
@@ -150,7 +156,7 @@ P(D) = \sum_{i=1}^N P(H_i)P(D|H_i)
 
 
 \begin{frame}[t]{Exercises!}
-Do question 1 on the exercise sheet!
+Do questions 1 and 2 on the exercise sheet!
 \end{frame}
 
 \begin{frame}[t]{Parameter estimation}
@@ -192,66 +198,9 @@ hypotheses.
 \end{frame}
 
 \begin{frame}[t]{Exercises}
-Do Question 2 on the exercise sheet!
+Do Question 3 on the exercise sheet!
 \end{frame}
 
-\begin{frame}[t]{Parameter estimation}
-Define the prior distribution $p(\theta)$
-
-
-\begin{equation}
-p(\theta | D) \propto p(\theta)p(D|\theta)
-\end{equation}
-
-This notation hides {\bf a lot}!
-\end{frame}
-
-
-\begin{frame}[t]{Ingredients I}
-Bayesian inference need the following inputs:
-
-\begin{itemize}
-\setlength{\itemsep}{20pt}
-\item A {\bf hypothesis space} describing the set of possible answers to our
-question (``parameter space'' in fitting is the same concept).
-\item A {\bf prior distribution} $p(\theta)$ describing how plausible
-each of the possible solutions is, not taking into account the data.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]{Ingredients II}
-Bayesian inference need the following inputs:
-\begin{itemize}
-\item A {\bf sampling distribution} $p(D | \theta)$ describing our knowledge
-about the connection between the parameters and the data.
-\end{itemize}
-
-When $D$ is known,
-this is a function of $\theta$ called the {\bf likelihood}.
-\end{frame}
-
-
-\begin{frame}[t]{The Posterior Distribution}
-The data helps us by changing our prior distribution to the {\bf posterior
-distribution}, given by
-\begin{eqnarray*}
-p(\theta | D) &=& \frac{p(\theta) p(D|\theta)}{p(D)}
-\end{eqnarray*}
-where the denominator is the normalisation constant, usually called either
-the {\bf marginal likelihood} or the {\bf evidence}.
-\begin{eqnarray*}
-p(D) &=& \int p(\theta)p(D|\theta) \, d\theta.
-\end{eqnarray*}
-
-\end{frame}
-
-\begin{frame}[t]{Posterior Distribution vs. Maximum Likelihood}
-The practical difference between these two concepts is greater in higher
-dimensional problems.
-\begin{center}
-\includegraphics[scale=0.35]{figures/bayes.pdf}
-\end{center}
-\end{frame}
 
 
 
@@ -390,23 +339,79 @@ It just seems more complicated than this because we often apply it to more
 complex sets of hypotheses.
 \end{frame}
 
+\begin{frame}[t]{Parameter estimation}
+If you want to infer the value of a quantity $\theta$
+(a ``parameter'') from the value of
+another quantity $D$ (some ``data''),
+define the prior distribution $p(\theta)$
+and the sampling distribution or likelihood $p(\theta | D)$,
+then calculate the {\bf posterior distribution}
+$p(\theta | D)$:
 
-\begin{frame}[t]{}
+\begin{equation}
+p(\theta | D) \propto p(\theta)p(D|\theta)
+\end{equation}
+
+This notation hides {\bf a lot}!
+\end{frame}
 
 
-\begin{table}[ht]
-\centering
-\begin{tabular}{c|cc|c}
-			&		My suitcase		&		Not my suitcase	&\\
-\hline
-\rowcolor{LightCyan}
-White sticker		&		0.4			&		0.06	& 0.46\\
-\rowcolor{DarkGray}
-No white sticker	&		0			&		0	& 0\\
-\hline
-			&				&		\\
-\end{tabular}
-\end{table}
+\begin{frame}[t]{Ingredients I}
+Bayesian parameter estimation needs the following inputs:
+
+\begin{itemize}
+\setlength{\itemsep}{20pt}
+\item A {\bf hypothesis space} describing the set of possible answers to our
+question (``parameter space'' in fitting is the same concept).
+\item A {\bf prior distribution} $p(\theta)$ describing how plausible
+each of the possible solutions is, not taking into account the data.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Ingredients II}
+Bayesian parameter estimation needs the following inputs:
+\begin{itemize}
+\item A {\bf sampling distribution} $p(D | \theta)$ describing our knowledge
+about the connection between the parameters and the data.
+\end{itemize}
+
+When $D$ is known,
+this is a function of $\theta$ called the {\bf likelihood}.
+\end{frame}
+
+
+\begin{frame}[t]{The Posterior Distribution}
+The data helps us by changing our prior distribution to the {\bf posterior
+distribution}, given by
+\begin{eqnarray*}
+p(\theta | D) &=& \frac{p(\theta) p(D|\theta)}{p(D)}
+\end{eqnarray*}
+where the denominator is the normalisation constant, usually called either
+the {\bf marginal likelihood} or the {\bf evidence}.
+\begin{eqnarray*}
+p(D) &=& \int p(\theta)p(D|\theta) \, d\theta.
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}[t]{Posterior Distribution vs. Maximum Likelihood}
+The practical difference between these two concepts is greater in higher
+dimensional problems.
+\begin{center}
+\includegraphics[scale=0.35]{figures/bayes.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}[t]{Question Sheet}
+Do Question 4!
+\end{frame}
+
+
+\begin{frame}[t]{Parameter estimation}
+For a single unknown parameter, it's quite easy to do things numerically
+on a grid.
+
+
 \end{frame}
 
 
