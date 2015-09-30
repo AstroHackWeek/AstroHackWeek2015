@@ -1,5 +1,8 @@
 # Python Profiling and Simple Parallelization 
 
+_John Parejko (@parejkoj), Lia Corrales (), Phil Marshall 
+(@drphilmarshall) and Andrew Hearin (@aphearin)_
+
 * [The Faster Python notebook](FasterPython.ipynb) contains most of the 
 examples from John Parejko's breakout Multiprocessing, distilled into 
 minimal working examples. It needs some more work in order for it to 
