@@ -12,7 +12,7 @@ plt.figure()
 plot_validation_curve(range(7), training_scores, test_scores)
 
 
-ks = range(10)
+ks = range(1, 10)
 training_scores, test_scores = validation_curve(KNeighborsClassifier(), X, y,
                                                 param_name="n_neighbors", param_range=ks)
 plt.figure()
