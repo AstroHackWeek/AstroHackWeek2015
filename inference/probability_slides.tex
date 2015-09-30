@@ -47,7 +47,9 @@ Propositions can be {\it combined} to make others, using the operators
 $A \wedge B$\\
 $C \vee A$\\
 $\neg D$\\
-$\neg (A \vee (C \wedge D))$
+$\neg (A \vee (C \wedge D))$\vspace{20pt}
+
+These things satisfy {\it Boolean Algebra}.
 \end{frame}
 
 \begin{frame}[t]{Notation}
@@ -97,7 +99,7 @@ Some other symmetries imply the {\bf product rule}, and hence that
 \begin{frame}[t]{Sum and product rule}
 $P(A \vee B) = P(A) + P(B) - P(A \wedge B)$\\
 \vspace{20pt}
-$P(A \wedge B) = P(A)P(B|A)$
+$P(A \wedge B) = P(A)P(B|A) = P(B)P(A|B)$
 \end{frame}
 
 \begin{frame}[t]{Bayes' Rule\hspace{170pt}$|| I$}
@@ -118,6 +120,10 @@ P(H | D) = \frac{P(H)P(D|H)}{P(D)}
 \textnormal{(posterior probability)} =
 \frac{\textnormal{(prior probability)}\times\textnormal{(likelihood)}}{\textnormal{(marginal likelihood)}}
 \end{equation}
+\vspace{20pt}
+
+The marginal likelihood is also known as the {\it evidence}. This is a
+physicist thing.
 \end{frame}
 
 \begin{frame}[t]{Another Bayes' Rule\hspace{170pt}$|| I$}
@@ -150,7 +156,7 @@ P(D) = \sum_{i=1}^N P(H_i)P(D|H_i)
 
 
 \begin{frame}[t]{Exercises!}
-Do question 1 on the exercise sheet!
+Do questions 1 and 2 on the exercise sheet!
 \end{frame}
 
 \begin{frame}[t]{Parameter estimation}
@@ -192,12 +198,17 @@ hypotheses.
 \end{frame}
 
 \begin{frame}[t]{Exercises}
-Do Question 2 on the exercise sheet!
+Do Question 3 on the exercise sheet!
 \end{frame}
 
 \begin{frame}[t]{Parameter estimation}
-Define the prior distribution $p(\theta)$
-
+If you want to infer the value of a quantity $\theta$
+(a ``parameter'') from the value of
+another quantity $D$ (some ``data''),
+define the prior distribution $p(\theta)$
+and the sampling distribution or likelihood $p(\theta | D)$,
+then calculate the {\bf posterior distribution}
+$p(\theta | D)$:
 
 \begin{equation}
 p(\theta | D) \propto p(\theta)p(D|\theta)
