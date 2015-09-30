@@ -423,8 +423,88 @@ plt.plot(mu, posterior)
 plt.show()
 \end{minted}
 
+In practice we often use the logarithms of the prior, likelihood, and
+posterior to avoid numerical problems.
+\end{frame}
+
+
+\begin{frame}[fragile, t]{Choosing priors}
+There are three broad approaches to assigning priors:
+
+\begin{enumerate}
+\item Use symmetries or otherwise try to define ``prior ignorance''. Often
+called ``{\bf objective Bayes}''
+\item Carefully interview an expert in the field and try to capture their
+degrees of confidence accurately. Often called ``{\bf subjective Bayes}''
+\item Just choose uniform, log-uniform, and gaussian distributions based on
+{\bf tradition}.
+\end{enumerate}
+
+Check your priors for {\bf unintended consequences}.
+\end{frame}
+
+
+\begin{frame}[t]{Unintended consequences: example}
+Let $\theta =$ the mass of a galaxy, in solar masses.
+
+``Prior ignorance'' might motivate this prior:
+
+\begin{eqnarray*}
+\theta \sim U(0, 10^{15}).
+\end{eqnarray*}
 
 \end{frame}
+
+\begin{frame}[t]{Why use the log-uniform prior?}
+``Prior ignorance'' might motivate this prior:
+
+\begin{eqnarray*}
+\theta \sim U(0, 10^{15}).
+\end{eqnarray*}
+
+But this implies:
+\begin{eqnarray*}
+P(\theta \geq 10^{14}) &=& 0.9\\
+P(\theta \geq 10^{12}) &=& 0.999.
+\end{eqnarray*}
+
+i.e. we are not ignorant at all, with respect to some questions!
+
+\end{frame}
+
+\begin{frame}[t]{Why use the log-uniform prior?}
+\begin{eqnarray*}
+\log_{10}(\theta) \sim U(5, 15).
+\end{eqnarray*}
+implies:
+\begin{eqnarray*}
+P(\theta \geq 10^{14}) &=& 0.1\\
+P(\theta \geq 10^{12}) &=& 0.3
+\end{eqnarray*}
+or
+\begin{eqnarray*}
+P(\theta \in [10^{10}, 10^{11}]) = P(\theta \in [10^{11}, 10^{12}])
+= P(\theta \in [10^{12}, 10^{13}]) ...
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}[t]{The log-uniform prior}
+The log-uniform prior has density $p(\theta) \propto 1/\theta$.
+\end{frame}
+
+
+
+\begin{frame}[fragile, t]{Common prior assumptions}
+
+{Independent and identically distributed} likelihood:
+\begin{eqnarray}
+p(\mathbf{D} | \theta) &=& \prod_{i=1}^N f(D_i | \theta)
+\end{eqnarray}
+
+\end{frame}
+
+
+
 
 
 \end{document}
