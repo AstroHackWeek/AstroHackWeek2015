@@ -6,7 +6,9 @@ import numpy as np
 # pylab: matplotlib's matlab-like interface
 import pylab as plt
 
-# The data we will fit:
+import daft
+
+# The data we will fit, sometimes:
 #  x, y, sigma_y
 data1 = np.array([[201,592,61],[244,401,25],[47,583,38],[287,402,15],[203,495,21],
                   [58,173,15],[210,479,27],[202,504,14],[198,510,30],[158,416,16],
@@ -103,7 +105,7 @@ def generate_data():
 
     x = xbar + xstd * np.random.randn(Ndata)
 
-    meanerr = 0.02*(xlimits[1] - xlimits[0])
+    meanerr = 0.025*(xlimits[1] - xlimits[0])
 
     sigmay = meanerr + 0.3 * meanerr * np.abs(np.random.randn(Ndata))
 
@@ -121,7 +123,7 @@ def plot_yerr(x, y, sigmay):
     plt.ylabel('$y$')
     plt.xlim(*xlimits)
     plt.ylim(*ylimits)
-    plt.title(title_prefix)
+    # plt.title(title_prefix)
 
 # Plot a   y = mx + b  line.
 def plot_line(m, b, **kwargs):
@@ -131,3 +133,37 @@ def plot_line(m, b, **kwargs):
     plt.xlim(*xlimits)
     plt.ylim(*ylimits)
     return p
+
+
+def draw_pgm():
+
+    # Instantiate a PGM.
+    pgm = daft.PGM([3.3, 3.0], origin=[0.3, 0.3], grid_unit=2.6, node_unit=1.3, observed_style="inner")
+
+    # Model parameters:
+    pgm.add_node(daft.Node("m", r"$m$", 0.8, 2.8))
+    pgm.add_node(daft.Node("b", r"$b$", 1.8, 2.8))
+
+    # Latent variable - intrinsic y:
+    pgm.add_node(daft.Node("ytrue", r"$y^{\rm true}_k$", 1.3, 1.4, fixed=True, offset=(0,-25)))
+
+    # Data - observed magnitude:
+    pgm.add_node(daft.Node("y", r"$y_k$", 2.5, 1.4, observed=True))
+
+    # Constants - magnitude errors:
+    pgm.add_node(daft.Node("sigma", r"$\sigma_k$", 1.9, 0.9, fixed=True, offset=(-3,0)))
+
+    # Add in the edges.
+    pgm.add_edge("m", "ytrue")
+    pgm.add_edge("b", "ytrue")
+    pgm.add_edge("sigma", "y")
+    pgm.add_edge("ytrue", "y")
+
+    # And a plate for the pixels
+    pgm.add_plate(daft.Plate([0.5, 0.7, 2.7, 1.4], label=r"datapoints $k$", shift=-0.1))
+
+    # Render and save.
+    pgm.render()
+    pgm.figure.savefig("straightline_pgm.png", dpi=300)
+
+    return
