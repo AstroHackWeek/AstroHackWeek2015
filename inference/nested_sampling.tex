@@ -19,12 +19,135 @@
 {\color{blue} @brendonbrewer}}
 
 \usepackage{dsfont}
+\usepackage{minted}
 
 \begin{document}
 
 \begin{frame}[t,plain]
 \titlepage
 \end{frame}
+
+\begin{frame}[t]{Transit Example}
+\begin{figure}
+\includegraphics[scale=0.4]{figures/transit_data.pdf}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}[t]{Related to the transit example...}
+\begin{itemize}
+\item Realistic exoplanet transits
+\item Finding emission/absorption lines in spectra
+\item Finding stars/galaxies in an image
+\item All ``curve fitting''
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{Transit Example: The Truth}
+The red curve was:
+\begin{eqnarray*}
+\mu(t) &=& \left\{
+\begin{array}{lr}
+10, & 2.5 \leq t \leq 4.5\\
+5,  & \textnormal{otherwise}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+\begin{figure}
+\includegraphics[scale=0.3]{figures/transit_data.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile, t]{Transit Example: The Truth}
+The red curve was:
+\begin{eqnarray*}
+\mu(t) &=& \left\{
+\begin{array}{lr}
+10, & 2.5 \leq t \leq 4.5\\
+5,  & \textnormal{otherwise}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+and the noise was added like this:
+\begin{minted}[mathescape,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{python}
+  # Add noise
+  sig = 1.
+  y += sig*rng.randn(y.size)
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile, t]{Transit Example: Inference}
+Let's fit the data with this model:
+\begin{eqnarray*}
+\mu(t) &=& \left\{
+\begin{array}{lr}
+A, & (t_c - w/2) \leq t \leq (t_c + w/2)\\
+A-b,  & \textnormal{otherwise}.
+\end{array}
+\right.
+\end{eqnarray*}
+
+We don't know $A$, $b$, $t_c$, and $w$. But we do know the data $D$.
+\end{frame}
+
+
+
+\begin{frame}[fragile, t]{Transit Example: Parameters}
+We don't know $A$, $b$, $t_c$, and $w$.
+These are our unknown parameters. Let's find the posterior.
+
+\begin{eqnarray*}
+p(A, b, t_c, w | D) &=& \frac{p(A, b, t_c, w)p(D | A, b, t_c, w)}{p(D)}
+\end{eqnarray*}
+
+and the marginal likelihood
+
+\begin{eqnarray*}
+p(D) &=& \int p(A, b, t_c, w)p(D | A, b, t_c, w) \, dA \, db \, dt_c \, dw
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}[t]{Uniform Priors}
+For all four parameters:
+
+\begin{eqnarray*}
+A &\sim& U(-100, 100)\\
+b &\sim& U(0, 10)\\
+t_c &\sim& U(t_{\rm min}, t_{\rm max})\\
+w &\sim& U(0, t_{\rm max} - t_{\rm min})
+\end{eqnarray*}
+
+Where $t_{\rm min}$ and $t_{\rm max}$ give the time range of the dataset.
+Question: is this legitimate? Are we using the data to set our priors?
+
+\end{frame}
+
+
+\begin{frame}[t]{Sampling Distribution / Likelihood}
+Let's assume ``gaussian noise'':
+
+\begin{eqnarray*}
+p(y_i | A, b, t_c, w) &=& \prod_{i=1}^N \frac{1}{\sigma_i\sqrt{2\pi}}
+\exp\left[
+-\frac{1}{2\sigma_i^2}\left(y_i - m(t_i; A, b, t_c, w)\right)^2
+\right].
+\end{eqnarray*}
+or more concisely:
+\begin{eqnarray*}
+y_i | A, b, t_c, w \sim \mathcal{N}\left(m(t_i; A, b, t_c, w), \sigma_i^2\right).
+\end{eqnarray*}
+
+\end{frame}
+
 
 
 \begin{frame}[t]{Nested Sampling}
@@ -205,9 +328,10 @@ approximation.
 
 %##########################################################################################################################################
 \begin{frame}[t]{Deterministic Approximation}
-\begin{figure}[]    		
-%		\includegraphics[scale=0.22,clip=true,angle=0]{Patricio/PriorExplore.pdf}
-		\caption{Deterministic approximation. Each iteration reduces
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{figures/deterministic.pdf}
+\caption{Deterministic approximation. Each iteration reduces
 the volume by a factor $\approx e^{-1/N}$. e.g. if $N=5$, the worst likelihood
 accounts for about 1/5th of the remaining prior volume.}
 \end{figure}

@@ -21,5 +21,5 @@ $(QUESTIONS): $(QUESTIONS).tex
 	pdflatex $(QUESTIONS).tex
 
 $(NS): $(NS).tex
-	pdflatex $(NS).tex
-	pdflatex $(NS).tex
+	pdflatex --shell-escape $(NS).tex
+	pdflatex --shell-escape $(NS).tex
