@@ -293,8 +293,8 @@ learned that $D$ is true. So we can confidently rule out those possibilities
 where $D$ is false:
 
 \begin{eqnarray*}
-P(H, D) &=& 0.01 \times 0.95\\
-P(\neg H, D) &=& 0.99 \times 0.05\\
+{\color{green} P(H, D)} &=& {\color{green}0.01 \times 0.95}\\
+{\color{green} P(\neg H, D)} &=& {\color{green} 0.99 \times 0.05}\\
 {\color{red} P(H, \neg D)} &=& {\color{red} 0.01 \times 0.05}\\
 {\color{red} P(\neg H, \neg D)} &=& {\color{red} 0.99 \times 0.95}\\
 \end{eqnarray*}
@@ -325,14 +325,15 @@ P(\neg H | D) &=& (0.99 \times 0.05)/(0.01 \times 0.95 + 0.99\times0.05) = 0.839
 \end{frame}
 
 \begin{frame}[t]{Moral}
-Bayesian updating is completely equivalent to:
-\begin{itemize}
-\item Writing a list of possible answers to your question
-\item Giving a probability to each
-\item Deleting the ones that you discover are false.
-\end{itemize}
+Bayesian updating is completely equivalent to this procedure:
+\begin{enumerate}
+\item Write a list of possible answers to your question.
+\item Give a probability to each.
+\item Delete the ones you discover are false.
+\item Renormalise the remaining probabilities.
+\end{enumerate}
 
-It just seems more complicated than this because we often apply it to more
+It just seems more complicated because we often apply it to more
 complex sets of hypotheses.
 \end{frame}
 
@@ -502,7 +503,8 @@ p(\mathbf{D} | \theta) &=& \prod_{i=1}^N f(D_i | \theta)
 
 \begin{frame}[fragile, t]{Marginalisation}
 
-This is why MCMC (next session) is useful, but it's also related to
+This is why MCMC (next session) is useful when there's more than one
+unknown parameter, but it's also related to
 {\bf prediction} in a Bayesian framework.
 
 \begin{figure}
@@ -512,6 +514,24 @@ This is why MCMC (next session) is useful, but it's also related to
 
 \end{frame}
 
+
+\begin{frame}[fragile, t]{Prediction}
+
+\begin{eqnarray}
+p(D_{\rm new} | D) &=& \int p(D_{\rm new}, \theta | D) \, d\theta\\
+&=& \int p(\theta | D)p(D_{\rm new} | \theta, D) \, d\theta\\
+&=& \int p(\theta | D)p(D_{\rm new} | \theta) \, d\theta\\
+\end{eqnarray}
+(usually)
+
+(posterior expectation of the conditional distribution for the prediction)
+
+\end{frame}
+
+
+\begin{frame}[fragile, t]{Question 5}
+There's a prediction question!
+\end{frame}
 
 
 
