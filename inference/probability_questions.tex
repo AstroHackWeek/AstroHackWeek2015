@@ -18,10 +18,7 @@ for Astro Hack Week 2015}
 \begin{document}
 \maketitle
 
-\section{Bayesian Inference}
-
-
-\subsection{Probability theory}
+\section{Probability theory}
 Here are some equations of probability theory. Which rules are being used in
 each? Is each equation completely general, or has something specific been
 assumed (e.g. independence, mutual exclusivity)?
@@ -40,7 +37,7 @@ our probabilities above are all dimensionless. Nevertheless, both satisfy rules
 of very similar form.
 
 
-\subsection{Bayes' Rule}
+\section{Bayes' Rule}
 The most useful form of Bayes' rule is
 \begin{equation}
 P(H_i | D) = \frac{P(H_i)P(D|H_i)}{P(D)}
@@ -52,7 +49,7 @@ P(D) = \sum_{i=1}^N P(H_i)P(D|H_i).\label{eq:evidence}
 $H_i$ can be interpreted as a hypothesis and $D$ as data.
 Give an intuitive explanation for why Equation~\ref{eq:evidence} is true.
 
-\subsection{Discrete parameter estimation}
+\section{Discrete parameter estimation}
 You are a customs agent. Among other things, you are supposed to prevent
 drugs being smuggled in packages sent into the country. A colleague finds a
 package containing two toys. Let the number of toys containing drugs be
@@ -67,7 +64,7 @@ $P(\eta=0) = P(\eta=1) = P(\eta=2) = 1/3$.
 $P(\eta = i | D) = \frac{P(\eta=i)P(D|\eta=i)}{P(D)}$, where the denominator is
 the same each time.}
 
-\subsection{Continuous parameter estimation}
+\section{Continuous parameter estimation}
 An X-ray source emits photons at a steady rate, but since it's so distant, we
 only pick up a few photons per second.
 A standard probabilistic model for the arrival times of the photons is the
@@ -80,7 +77,7 @@ p(x | \mu) &=& \frac{\mu^x e^{-\mu}}{x!}
 Find and plot the posterior distribution for $\mu$ given $x=5$. Use an improper
 log-uniform prior proportional to $\mu^{-1}$.
 
-\subsection{Prediction}
+\section{Prediction}
 Use the posterior distribution obtained in the previous question to calculate
 the predictive distribution for $x'$, the number of photons observed in a
 different one second interval, given $x=5$. Plot the predictive distribution
