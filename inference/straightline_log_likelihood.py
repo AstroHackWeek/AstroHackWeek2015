@@ -1,4 +1,4 @@
-def straight_line_log_likelihood(x, y, sigmay, m, b):
+def straight_line_log_likelihood(theta, x, y, sigmay):
     '''
     Returns the log-likelihood of drawing data values *y* at
     known values *x* given Gaussian measurement noise with standard
@@ -13,6 +13,6 @@ def straight_line_log_likelihood(x, y, sigmay, m, b):
 
     Returns: scalar log likelihood
     '''
-
+    m,b = theta
     return (np.sum(np.log(1./(np.sqrt(2.*np.pi) * sigmay))) +
             np.sum(-0.5 * (y - (m*x + b))**2 / sigmay**2))
