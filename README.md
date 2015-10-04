@@ -1,13 +1,18 @@
 # Astro Hack Week 2015
 
-#### Participants: [please see the wiki](https://github.com/AstroHackWeek/AstroHackWeek2015/wiki) for information about locations, hacking etc.
+Teaching materials from the week, as well as some breakout and hack materials.
 
-* For more general information, please see [the website](http://astrohackweek.github.io/)
+Other materials:
 
-* Some of the teaching materials for the 2015 Astro Hack Week will appear in the folders of this repo.
+* [The Wiki](https://github.com/AstroHackWeek/AstroHackWeek2015/wiki):
+  information about locations & hacking
 
-* Questions? [Please write us an issue](https://github.com/AstroHackWeek/AstroHackWeek2015/issues)
+* [The Website](http://astrohackweek.github.io/): general information
 
-Want to try it out in your browser? Run these notebooks in the cloud using Binder
+* [The hackpad](https://hackpad.com/Astro-Hack-Week-2015-Hack-Index-RLfELNMgCSC):
+  hacking results from the week.
+
+Want to try out these materials in your browser? Run the notebooks
+in the cloud using Binder
 
 [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/AstroHackWeek/AstroHackWeek2015)
